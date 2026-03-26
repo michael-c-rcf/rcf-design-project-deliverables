@@ -705,6 +705,45 @@
     .section { page-break-inside: avoid; }
     .cluster-card { page-break-inside: avoid; }
   }
+
+  /* ── LIGHTBOX ── */
+  .screenshot-item img { cursor: zoom-in; transition: opacity 0.15s; }
+  .screenshot-item img:hover { opacity: 0.88; }
+
+  .lightbox-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: rgba(10,10,10,0.92);
+    align-items: center;
+    justify-content: center;
+    cursor: zoom-out;
+  }
+  .lightbox-overlay.active { display: flex; }
+
+  .lightbox-overlay img {
+    max-width: 92vw;
+    max-height: 90vh;
+    object-fit: contain;
+    box-shadow: 0 8px 48px rgba(0,0,0,0.6);
+    pointer-events: none;
+  }
+
+  .lightbox-label {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+    background: rgba(10,10,10,0.7);
+    padding: 6px 16px;
+    pointer-events: none;
+  }
 </style>
 </head>
 <body>
@@ -819,19 +858,19 @@
     <div class="screenshot-grid">
       <div class="screenshot-item">
         <span class="screenshot-label">Isometric</span>
-        <img src="assets/spl-isometric.png" alt="SPL Coverage — Isometric View">
+        <img src="assets/spl-isometric.png" alt="SPL Coverage — Isometric View" onclick="openLightbox(this.src, 'Isometric View')">
       </div>
       <div class="screenshot-item">
         <span class="screenshot-label">Side</span>
-        <img src="assets/spl-side.png" alt="SPL Coverage — Side View">
+        <img src="assets/spl-side.png" alt="SPL Coverage — Side View" onclick="openLightbox(this.src, 'Side View')">
       </div>
       <div class="screenshot-item">
         <span class="screenshot-label">Front</span>
-        <img src="assets/spl-front.png" alt="SPL Coverage — Front View">
+        <img src="assets/spl-front.png" alt="SPL Coverage — Front View" onclick="openLightbox(this.src, 'Front View')">
       </div>
       <div class="screenshot-item">
         <span class="screenshot-label">Top</span>
-        <img src="assets/spl-top.png" alt="SPL Coverage — Top View">
+        <img src="assets/spl-top.png" alt="SPL Coverage — Top View" onclick="openLightbox(this.src, 'Top View')">
       </div>
     </div>
 
@@ -1430,6 +1469,30 @@
     <div style="margin-top:4px; color: #444;">© 2026 RCF S.p.A. · Confidential — For Client Use Only</div>
   </div>
 </footer>
+
+
+<!-- LIGHTBOX -->
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img" src="" alt="">
+  <div class="lightbox-label" id="lightbox-label"></div>
+</div>
+
+
+<script>
+  function openLightbox(src, label) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox-label').textContent = label;
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox();
+  });
+</script>
 
 </body>
 </html>
