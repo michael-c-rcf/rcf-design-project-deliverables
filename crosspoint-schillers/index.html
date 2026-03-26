@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RCF System Report — Crosspoint Church (Schillers)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Barlow+Condensed:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --black: #0a0a0a;
+    --white: #fafafa;
+    --gray-100: #f0f0f0;
+    --gray-200: #e0e0e0;
+    --gray-400: #999;
+    --gray-600: #555;
+    --gray-800: #222;
+    --rule: 1px solid #1a1a1a;
+    --rule-light: 1px solid #e0e0e0;
+    --mono: 'DM Mono', monospace;
+    --sans: 'Barlow', sans-serif;
+    --condensed: 'Barlow Condensed', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { font-size: 16px; scroll-behavior: smooth; }
+
+  body {
+    background: var(--white);
+    color: var(--black);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--black);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 48px;
+    height: 56px;
+    border-bottom: var(--rule);
+  }
+
+  .site-header .logo {
+    font-family: var(--condensed);
+    font-weight: 800;
+    font-size: 1.5rem;
+    letter-spacing: 0.12em;
+    color: var(--white);
+    text-decoration: none;
+  }
+
+  .site-header .doc-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+  }
+
+  .site-header nav {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+  }
+
+  .site-header nav a {
+    font-family: var(--condensed);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .site-header nav a:hover { color: var(--white); }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--black);
+    color: var(--white);
+    padding: 80px 48px 64px;
+    border-bottom: 4px solid var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: 'SYSTEM REPORT';
+    position: absolute;
+    right: 48px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--condensed);
+    font-weight: 800;
+    font-size: clamp(4rem, 10vw, 9rem);
+    letter-spacing: -0.02em;
+    color: rgba(255,255,255,0.04);
+    line-height: 1;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+    margin-bottom: 16px;
+  }
+
+  .hero h1 {
+    font-family: var(--condensed);
+    font-weight: 700;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    letter-spacing: -0.01em;
+    line-height: 1.05;
+    margin-bottom: 8px;
+  }
+
+  .hero h1 span {
+    display: block;
+    font-weight: 300;
+    font-size: 0.55em;
+    letter-spacing: 0.05em;
+    color: var(--gray-400);
+    font-family: var(--sans);
+    margin-top: 4px;
+  }
+
+  .hero-meta {
+    margin-top: 40px;
+    display: flex;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+
+  .hero-meta-item label {
+    display: block;
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+    margin-bottom: 4px;
+  }
+
+  .hero-meta-item value {
+    display: block;
+    font-family: var(--condensed);
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 0.03em;
+    color: var(--white);
+  }
+
+  /* ── LAYOUT ── */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+
+  .section {
+    padding: 64px 0;
+    border-bottom: var(--rule-light);
+  }
+
+  .section:last-child { border-bottom: none; }
+
+  /* ── SECTION HEADERS ── */
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    margin-bottom: 40px;
+    padding-bottom: 16px;
+    border-bottom: var(--rule);
+  }
+
+  .section-number {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--gray-400);
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-family: var(--condensed);
+    font-weight: 700;
+    font-size: 1.6rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  /* ── REPORT INFO TABLE ── */
+  .info-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .info-table tr {
+    border-bottom: var(--rule-light);
+  }
+
+  .info-table tr:first-child {
+    border-top: var(--rule);
+  }
+
+  .info-table td {
+    padding: 14px 0;
+    vertical-align: top;
+  }
+
+  .info-table td:first-child {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray-600);
+    width: 200px;
+    padding-right: 32px;
+  }
+
+  .info-table td:last-child {
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: 0.9rem;
+  }
+
+  /* ── COORDINATE NOTE ── */
+  .coord-note {
+    margin-top: 32px;
+    border-left: 3px solid var(--black);
+    padding: 20px 24px;
+    background: var(--gray-100);
+  }
+
+  .coord-note h4 {
+    font-family: var(--condensed);
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .coord-note ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .coord-note ul li {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--gray-800);
+  }
+
+  .coord-note ul li::before {
+    content: '→ ';
+    color: var(--gray-400);
+  }
+
+  /* ── VIDEO CARD ── */
+  .video-card {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    border: var(--rule);
+    padding: 24px;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.15s;
+  }
+
+  .video-card:hover { background: var(--gray-100); }
+
+  .video-thumb {
+    width: 120px;
+    height: 68px;
+    background: var(--black);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .video-thumb::after {
+    content: '▶';
+    font-size: 1.5rem;
+    color: var(--white);
+  }
+
+  .video-info label {
+    display: block;
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+    margin-bottom: 6px;
+  }
+
+  .video-info .video-title {
+    font-family: var(--condensed);
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.02em;
+    margin-bottom: 4px;
+  }
+
+  .video-info .video-meta {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--gray-600);
+  }
+
+  /* ── SPL SCREENSHOTS ── */
+  .screenshot-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--black);
+    border: var(--rule);
+  }
+
+  .screenshot-item {
+    background: var(--white);
+    padding: 0;
+    position: relative;
+  }
+
+  .screenshot-label {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: var(--black);
+    color: var(--white);
+    padding: 3px 8px;
+    z-index: 2;
+  }
+
+  .screenshot-item img {
+    width: 100%;
+    display: block;
+  }
+
+  .screenshot-placeholder {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: var(--gray-100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .screenshot-placeholder span {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--gray-400);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ── CLUSTER SUMMARY TABLE ── */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+  }
+
+  .data-table thead tr {
+    border-bottom: 2px solid var(--black);
+  }
+
+  .data-table thead th {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray-600);
+    padding: 10px 12px 10px 0;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .data-table thead th:first-child { padding-left: 0; width: 28px; }
+
+  .data-table tbody tr {
+    border-bottom: var(--rule-light);
+    transition: background 0.1s;
+  }
+
+  .data-table tbody tr:hover { background: var(--gray-100); }
+
+  .data-table tbody td {
+    padding: 12px 12px 12px 0;
+    vertical-align: middle;
+  }
+
+  .data-table tbody td:first-child {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--gray-400);
+    padding-left: 0;
+  }
+
+  .cluster-name {
+    font-family: var(--condensed);
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.03em;
+  }
+
+  .model-tag {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--gray-600);
+    display: block;
+    margin-top: 2px;
+  }
+
+  .qty-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+  }
+
+  .coord-val {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    white-space: nowrap;
+  }
+
+  .aim-val {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--gray-600);
+    white-space: nowrap;
+  }
+
+  /* ── CLUSTER DETAIL CARDS ── */
+  .cluster-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--black);
+  }
+
+  .cluster-card {
+    background: var(--white);
+    padding: 32px;
+  }
+
+  .cluster-card-header {
+    border-bottom: 2px solid var(--black);
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+  }
+
+  .cluster-card-header .cluster-id {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    color: var(--gray-400);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .cluster-card-header h3 {
+    font-family: var(--condensed);
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .cluster-card-header .cluster-type {
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--gray-600);
+    margin-top: 2px;
+  }
+
+  .detail-group {
+    margin-bottom: 20px;
+  }
+
+  .detail-group h4 {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: var(--rule-light);
+  }
+
+  .detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--gray-200);
+  }
+
+  .detail-row:last-child { border-bottom: none; }
+
+  .detail-row .key {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--gray-600);
+  }
+
+  .detail-row .val {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--black);
+  }
+
+  .rigging-note {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--gray-800);
+    padding: 4px 0;
+    line-height: 1.5;
+  }
+
+  .rigging-note::before { content: '— '; color: var(--gray-400); }
+
+  /* Splay table inside cluster card */
+  .splay-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 4px;
+  }
+
+  .splay-table tr { border-bottom: 1px solid var(--gray-200); }
+  .splay-table tr:last-child { border-bottom: none; }
+
+  .splay-table td {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    padding: 4px 0;
+  }
+
+  .splay-table td:last-child {
+    text-align: right;
+    font-weight: 500;
+  }
+
+  /* ── AMP ALLOCATION ── */
+  .amp-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    background: var(--black);
+  }
+
+  .amp-block {
+    background: var(--white);
+    padding: 28px 32px;
+  }
+
+  .amp-block-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--black);
+  }
+
+  .amp-id {
+    font-family: var(--condensed);
+    font-weight: 800;
+    font-size: 1.4rem;
+    letter-spacing: 0.04em;
+  }
+
+  .amp-model {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--gray-400);
+    letter-spacing: 0.1em;
+  }
+
+  .amp-channels { display: flex; flex-direction: column; gap: 0; }
+
+  .amp-channel {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    align-items: center;
+    gap: 16px;
+    padding: 10px 0;
+    border-bottom: var(--rule-light);
+  }
+
+  .amp-channel:last-child { border-bottom: none; }
+
+  .ch-letter {
+    font-family: var(--condensed);
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    color: var(--gray-400);
+  }
+
+  .ch-dest {
+    font-family: var(--sans);
+    font-size: 0.82rem;
+    font-weight: 400;
+  }
+
+  .ch-dest strong {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  .ch-detail {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--gray-600);
+  }
+
+  /* ── FOOTER ── */
+  .site-footer {
+    background: var(--black);
+    color: var(--gray-600);
+    padding: 40px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0;
+  }
+
+  .site-footer .footer-logo {
+    font-family: var(--condensed);
+    font-weight: 800;
+    font-size: 1.2rem;
+    letter-spacing: 0.12em;
+    color: var(--white);
+  }
+
+  .site-footer .footer-meta {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-align: right;
+    line-height: 1.8;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .site-header { padding: 0 24px; }
+    .hero { padding: 48px 24px 40px; }
+    .container { padding: 0 24px; }
+    .cluster-grid { grid-template-columns: 1fr; }
+    .amp-grid { grid-template-columns: 1fr; }
+    .screenshot-grid { grid-template-columns: 1fr; }
+    .hero-meta { gap: 24px; }
+    .site-footer { padding: 32px 24px; flex-direction: column; gap: 16px; align-items: flex-start; }
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    .site-header { position: static; }
+    .section { page-break-inside: avoid; }
+    .cluster-card { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <a href="#" class="logo">RCF</a>
+  <span class="doc-label">System Report — Confidential</span>
+  <nav>
+    <a href="#overview">Overview</a>
+    <a href="#screenshots">SPL</a>
+    <a href="#clusters">Clusters</a>
+    <a href="#amps">Amplifiers</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-eyebrow">RCF · Installed Sound Division</p>
+  <h1>
+    Crosspoint Church
+    <span>Schillers Campus · St. Louis, MO</span>
+  </h1>
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <label>Report Date</label>
+      <value>March 24, 2026</value>
+    </div>
+    <div class="hero-meta-item">
+      <label>Version</label>
+      <value>v1.0</value>
+    </div>
+    <div class="hero-meta-item">
+      <label>EASE Version</label>
+      <value>5.81.0.665</value>
+    </div>
+    <div class="hero-meta-item">
+      <label>Author</label>
+      <value>Michael Curtis</value>
+    </div>
+    <div class="hero-meta-item">
+      <label>Project File</label>
+      <value>RCF_Crosspoint Church (Schillers)_v1.eprj</value>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 01: SYSTEM OVERVIEW -->
+<div id="overview" class="container">
+  <section class="section">
+    <div class="section-header">
+      <span class="section-number">01</span>
+      <h2 class="section-title">System Overview</h2>
+    </div>
+
+    <table class="info-table">
+      <tbody>
+        <tr><td>Project</td><td>RCF Crosspoint Church (Schillers)</td></tr>
+        <tr><td>Project File</td><td>RCF_Crosspoint Church (Schillers)_v1.eprj</td></tr>
+        <tr><td>EASE Version</td><td>5.81.0.665</td></tr>
+        <tr><td>Report Date</td><td>March 24, 2026</td></tr>
+        <tr><td>Coordinate System</td><td>X = SR(+) / SL(−) · Y = Audience(+) / Stage(−) · Z = Up(+)</td></tr>
+        <tr><td>Author</td><td>Michael Curtis · RCF USA</td></tr>
+      </tbody>
+    </table>
+
+    <div class="coord-note">
+      <h4>Coordinate System Reference</h4>
+      <ul>
+        <li>Origin is downstage center edge</li>
+        <li>Positive X = Stage Right; Negative X = Stage Left</li>
+        <li>Positive Y = toward audience; Negative Y = toward / behind stage</li>
+        <li>Positive Z = upward. All positions in feet (ft) and angles in degrees (deg)</li>
+      </ul>
+    </div>
+  </section>
+</div>
+
+<!-- SECTION 02: DESIGN WALKTHROUGH -->
+<div class="container">
+  <section class="section">
+    <div class="section-header">
+      <span class="section-number">02</span>
+      <h2 class="section-title">Design Walkthrough</h2>
+    </div>
+
+    <a href="#" class="video-card">
+      <div class="video-thumb"></div>
+      <div class="video-info">
+        <label>Descript · Video Walkthrough</label>
+        <div class="video-title">System Design Review v1 · RCF Crosspoint Church (Schillers)</div>
+        <div class="video-meta">Michael Curtis · October 14, 2025 · Full system walkthrough with annotation</div>
+      </div>
+    </a>
+  </section>
+</div>
+
+<!-- SECTION 03: SYSTEM SCREENSHOTS -->
+<div id="screenshots" class="container">
+  <section class="section">
+    <div class="section-header">
+      <span class="section-number">03</span>
+      <h2 class="section-title">SPL Coverage — All Views</h2>
+    </div>
+
+    <div class="screenshot-grid">
+      <div class="screenshot-item">
+        <span class="screenshot-label">Isometric</span>
+        <div class="screenshot-placeholder">
+          <span>EASE 5 · Direct SPL Broadband (A-wtd)</span>
+          <span>Isometric View</span>
+        </div>
+      </div>
+      <div class="screenshot-item">
+        <span class="screenshot-label">Side</span>
+        <div class="screenshot-placeholder">
+          <span>EASE 5 · Direct SPL Broadband (A-wtd)</span>
+          <span>Side View</span>
+        </div>
+      </div>
+      <div class="screenshot-item">
+        <span class="screenshot-label">Front</span>
+        <div class="screenshot-placeholder">
+          <span>EASE 5 · Direct SPL Broadband (A-wtd)</span>
+          <span>Front View</span>
+        </div>
+      </div>
+      <div class="screenshot-item">
+        <span class="screenshot-label">Top</span>
+        <div class="screenshot-placeholder">
+          <span>EASE 5 · Direct SPL Broadband (A-wtd)</span>
+          <span>Top View</span>
+        </div>
+      </div>
+    </div>
+
+    <p style="margin-top: 16px; font-family: var(--mono); font-size: 0.65rem; color: var(--gray-400); letter-spacing: 0.08em;">
+      Interference: Off · Shadowing: On · Resolution: 1′–0 1/4″ · Lipko: 0/8 · Arrays: 11/11
+    </p>
+  </section>
+</div>
+
+<!-- SECTION 04: CLUSTER SUMMARY -->
+<div id="clusters" class="container">
+  <section class="section">
+    <div class="section-header">
+      <span class="section-number">04</span>
+      <h2 class="section-title">Summary — All Clusters</h2>
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Cluster</th>
+          <th>Qty</th>
+          <th>X (ft)</th>
+          <th>Y (ft)</th>
+          <th>Z (ft)</th>
+          <th>Aim H</th>
+          <th>Aim V</th>
+          <th>Roll</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td><span class="cluster-name">Main L</span><span class="model-tag">HL 6</span></td>
+          <td><span class="qty-badge">9</span></td>
+          <td class="coord-val">−18.0</td>
+          <td class="coord-val">−15.0</td>
+          <td class="coord-val">24.0</td>
+          <td class="aim-val">−22 deg</td>
+          <td class="aim-val">+6 deg</td>
+          <td class="aim-val">+0.0 deg</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><span class="cluster-name">Main R</span><span class="model-tag">HL 6</span></td>
+          <td><span class="qty-badge">9</span></td>
+          <td class="coord-val">+18.0</td>
+          <td class="coord-val">−15.0</td>
+          <td class="coord-val">24.0</td>
+          <td class="aim-val">+22 deg</td>
+          <td class="aim-val">+6 deg</td>
+          <td class="aim-val">+0.0 deg</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><span class="cluster-name">Front Fill L</span><span class="model-tag">COMPACT M 08</span></td>
+          <td><span class="qty-badge">1</span></td>
+          <td class="coord-val">−37.0</td>
+          <td class="coord-val">−2.5</td>
+          <td class="coord-val">3.0</td>
+          <td class="aim-val">−45 deg</td>
+          <td class="aim-val">+0.0 deg</td>
+          <td class="aim-val">+90 deg</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><span class="cluster-name">Front Fill R</span><span class="model-tag">COMPACT M 08</span></td>
+          <td><span class="qty-badge">1</span></td>
+          <td class="coord-val">+37.0</td>
+          <td class="coord-val">−2.5</td>
+          <td class="coord-val">3.0</td>
+          <td class="aim-val">+45 deg</td>
+          <td class="aim-val">+0.0 deg</td>
+          <td class="aim-val">−90 deg</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td><span class="cluster-name">Side Fill L</span><span class="model-tag">COMPACT C 45</span></td>
+          <td><span class="qty-badge">1</span></td>
+          <td class="coord-val">−33.7</td>
+          <td class="coord-val">−3.0</td>
+          <td class="coord-val">22.0</td>
+          <td class="aim-val">−48 deg</td>
+          <td class="aim-val">+0.0 deg</td>
+          <td class="aim-val">+90 deg</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td><span class="cluster-name">Side Fill R</span><span class="model-tag">COMPACT C 45</span></td>
+          <td><span class="qty-badge">1</span></td>
+          <td class="coord-val">+33.7</td>
+          <td class="coord-val">−3.0</td>
+          <td class="coord-val">22.0</td>
+          <td class="aim-val">+48 deg</td>
+          <td class="aim-val">+0.0 deg</td>
+          <td class="aim-val">−90 deg</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td><span class="cluster-name">Center Fill</span><span class="model-tag">COMPACT C 45</span></td>
+          <td><span class="qty-badge">1</span></td>
+          <td class="coord-val">+0.0</td>
+          <td class="coord-val">−20.0</td>
+          <td class="coord-val">22.0</td>
+          <td class="aim-val">0 deg</td>
+          <td class="aim-val">−30 deg</td>
+          <td class="aim-val">+0.0 deg</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td><span class="cluster-name">Center Sub Array</span><span class="model-tag">S 29</span></td>
+          <td><span class="qty-badge">3</span></td>
+          <td class="coord-val">+0.0</td>
+          <td class="coord-val">+0.0</td>
+          <td class="coord-val">25.0</td>
+          <td class="aim-val">0 deg</td>
+          <td class="aim-val">+0.0 deg</td>
+          <td class="aim-val">+0.0 deg</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>
+
+<!-- SECTION 05: CLUSTER DETAIL -->
+<div class="container">
+  <section class="section">
+    <div class="section-header">
+      <span class="section-number">05</span>
+      <h2 class="section-title">Cluster / Speaker Detail</h2>
+    </div>
+
+    <div class="cluster-grid">
+
+      <!-- Main L -->
+      <div class="cluster-card">
+        <div class="cluster-card-header">
+          <div class="cluster-id">Cluster 01</div>
+          <h3>Main L · HL 6</h3>
+          <div class="cluster-type">9× Cabinets · Line Array</div>
+        </div>
+        <div class="detail-group">
+          <h4>Rigging</h4>
+          <div class="rigging-note">FB-HDL6 flybar</div>
+          <div class="rigging-note">Single Point Hang · Closet Pinpoint: 9-10B</div>
+        </div>
+        <div class="detail-group">
+          <h4>Position (Hang Point)</h4>
+          <div class="detail-row"><span class="key">X (L/R)</span><span class="val">−18.0 ft</span></div>
+          <div class="detail-row"><span class="key">Y (Depth)</span><span class="val">−15.0 ft</span></div>
+          <div class="detail-row"><span class="key">Z (Height)</span><span class="val">+24.0 ft AFF</span></div>
+        </div>
+        <div class="detail-group">
+          <h4>Orientation / Aim</h4>
+          <div class="detail-row"><span class="key">Aim H</span><span class="val">−22 deg from fwd</span></div>
+          <div class="detail-row"><span class="key">Aim V</span><span class="val">+6 deg elevation</span></div>
+          <div class="detail-row"><span class="key">Roll</span><span class="val">+0.0 deg</span></div>
+        </div>
+        <div class="detail-group">
+          <h4>Splay / Array Config</h4>
+          <table class="splay-table">
+            <tr><td>Box 1 → 2</td><td>2.0 deg</td></tr>
+            <tr><td>Box 2 → 3</td><td>3.0 deg</td></tr>
+            <tr><td>Box 3 → 4</td><td>4.0 deg</td></tr>
+            <tr><td>Box 4 → 5</td><td>4.0 deg</td></tr>
+            <tr><td>Box 5 → 6</td><td>5.0 deg</td></tr>
+            <tr><td>Box 6 → 7</td><td>5.0 deg</td></tr>
+            <tr><td>Box 7 → 8</td><td>10.0 deg</td></tr>
+            <tr><td>Box 8 → 9</td><td>10.0 deg</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- Main R -->
+      <div class="cluster-card">
+        <div class="cluster-card-header">
+          <div class="cluster-id">Cluster 02</div>
+          <h3>Main R · HL 6</h3>
+          <div class="cluster-type">9× Cabinets · Line Array</div>
+        </div>
+        <div class="detail-group">
+          <h4>Rigging</h4>
+          <div class="rigging-note">FB-HDL6 flybar</div>
+          <div class="rigging-note">Single Point Hang · Closet Pinpoint: 9-10B</div>
+        </div>
+        <div class="detail-group">
+          <h4>Position (Hang Point)</h4>
+          <div class="detail-row"><span class="key">X (L/R)</span><span class="val">+18.0 ft</span></div>
+          <div class="detail-row"><span class="key">Y (Depth)</span><span class="val">−15.0 ft</span></div>
+          <div class="detail-row"><span class="key">Z (Height)</span><span class="val">+24.0 ft AFF</span></div>
+        </div>
+        <div class="detail-group">
+          <h4>Orientation / Aim</h4>
+          <div class="detail-row"><span class="key">Aim H</span><span class="val">+22 deg from fwd</span></div>
+          <div class="detail-row"><span class="key">Aim V</span><span class="val">+6 deg elevation</span></div>
+          <div class="detail-row"><span class="key">Roll</span><span class="val">+0.0 deg</span></div>
+        </div>
+        <div class="detail-group">
+          <h4>Splay / Array Config</h4>
+          <table class="splay-table">
+            <tr><td>Box 1 → 2</td><td>2.0 deg</td></tr>
+            <tr><td>Box 2 → 3</td><td>3.0 deg</td></tr>
+            <tr><td>Box 3 → 4</td><td>4.0 deg</td></tr>
+            <tr><td>Box 4 → 5</td><td>4.0 deg</td></tr>
+            <tr><td>Box 5 → 6</td><td>5.0 deg</td></tr>
+            <tr><td>Box 6 → 7</td><td>5.0 deg</td></tr>
+            <tr><td>Box 7 → 8</td><td>10.0 deg</td></tr>
+            <tr><td>Box 8 → 9</td><td>10.0 deg</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- Front Fill L -->
+      <div class="cluster-card">
+        <div class="cluster-card-header">
+          <div class="cluster-id">Cluster 03</div>
+          <h3>Front Fill L · COMPACT M 08</h3>
+          <div class="cluster-type">Single Cabinet</div>
+        </div>
+        <div class="detail-group">
+          <h4>Rigging</h4>
+          <div class="rigging-note">Horizontally mounted</div>
+          <div class="rigging-note">Resting on downstage edge</div>
+        </div>
+        <div class="detail-group">
+          <h4>Position</h4>
+          <div class="detail-row"><span class="key">X (L/R)</span><span class="val">−37.0 ft</span></div>
+          <div class="detail-row"><span class="key">Y (Depth)</span><span class="val">−2.5 ft</span></div>
+          <div class="detail-row"><span class="key">Z (Height)</span><span class="val">+3.0 ft AFF</span></div>
+        </div>
+        <div class="detail-group">
+          <h4>Orientation / Aim</h4>
+          <div class="detail-row"><span class="key">Aim H</span><span class="val">−45 deg from fwd</span></div>
+          <div class="detail-row"><span class="key">Aim V</span><span class="val">+0.0 deg elevation</span></div>
+          <div class="detail-row"><span class="key">Roll</span><span class="val">+90.0 deg</span></div>
+        </div>
+      </div>
+
+      <!-- Front Fill R -->
+      <div class="cluster-card">
+        <div class="cluster-card-header">
+          <div class="cluster-id">Cluster 04</div>
+          <h3>Front Fill R · COMPACT M 08</h3>
+          <div class="cluster-type">Single Cabinet</div>
+        </div>
+        <div class="detail-group">
+          <h4>Rigging</h4>
+          <div class="rigging-note">Horizontally mounted</div>
+          <div class="rigging-note">Resting on downstage edge</div>
+        </div>
+        <div class="detail-group">
+          <h4>Position</h4>
+          <div class="detail-row"><span class="key">X (L/R)</span><span class="val">+37.0 ft</span></div>
+          <div class="detail-row"><span class="key">Y (Depth)</span><span class="val">−2.5 ft</span></div>
+          <div class="detail-row"><span class="key">Z (Height)</span><span class="val">+3.0 ft AFF</span></div>
+        </div>
+        <div class="detail-group">
+          <h4>Orientation / Aim</h4>
+          <div class="detail-row"><span class="key">Aim H</span><span class="val">+45 deg from fwd</span></div>
+          <div class="detail-row"><span class="key">Aim V</span><span class="val">+0.0 deg elevation</span></div>
+          <div class="detail-row"><span class="key">Roll</span><span class="val">−90.0 deg</span></div>
+        </div>
+      </div>
+
+      <!-- Side Fill L -->
+      <div class="cluster-card">
+        <div class="cluster-card-header">
+          <div class="cluster-id">Cluster 05</div>
+          <h3>Side Fill L · COMPACT C 45</h3>
+          <div class="cluster-type">Single Cabinet</div>
+        </div>
+        <div class="detail-group">
+          <h4>Rigging</h4>
+          <div class="rigging-note" style="font-style:italic;">Vertically mounted · waveguide rotated 90 deg for 50×100 pattern</div>
+          <div class="rigging-note">V-BR 001 vertical bracket</div>
+        </div>
+        <div class="detail-group">
+          <h4>Position</h4>
+          <div class="detail-row"><span class="key">X (L/R)</span><span class="val">−33.7 ft</span></div>
+          <div class="detail-row"><span class="key">Y (Depth)</span><span class="val">−3.0 ft</span></div>
+          <div class="detail-row"><span class="key">Z (Height)</span><span class="val">+22.0 ft AFF</span></div>
+        </div>
+        <div class="detail-group">
+          <h4>Orientation / Aim</h4>
+          <div class="detail-row"><span class="key">Aim H</span><span class="val">−48 deg from fwd</span></div>
+          <div class="detail-row"><span class="key">Aim V</span><span class="val">+0.0 deg elevation</span></div>
+          <div class="detail-row"><span class="key">Roll</span><span class="val">+90 deg</span></div>
+        </div>
+      </div>
+
+      <!-- Side Fill R -->
+      <div class="cluster-card">
+        <div class="cluster-card-header">
+          <div class="cluster-id">Cluster 06</div>
+          <h3>Side Fill R · COMPACT C 45</h3>
+          <div class="cluster-type">Single Cabinet</div>
+        </div>
+        <div class="detail-group">
+          <h4>Rigging</h4>
+          <div class="rigging-note" style="font-style:italic;">Vertically mounted · waveguide rotated 90 deg for 50×100 pattern</div>
+          <div class="rigging-note">V-BR 001 vertical bracket</div>
+        </div>
+        <div class="detail-group">
+          <h4>Position</h4>
+          <div class="detail-row"><span class="key">X (L/R)</span><span class="val">+33.7 ft</span></div>
+          <div class="detail-row"><span class="key">Y (Depth)</span><span class="val">−3.0 ft</span></div>
+          <div class="detail-row"><span class="key">Z (Height)</span><span class="val">+22.0 ft AFF</span></div>
+        </div>
+        <div class="detail-group">
+          <h4>Orientation / Aim</h4>
+          <div class="detail-row"><span class="key">Aim H</span><span class="val">+48 deg from fwd</span></div>
+          <div class="detail-row"><span class="key">Aim V</span><span class="val">+0.0 deg elevation</span></div>
+          <div class="detail-row"><span class="key">Roll</span><span class="val">−90 deg</span></div>
+        </div>
+      </div>
+
+      <!-- Center Fill -->
+      <div class="cluster-card">
+        <div class="cluster-card-header">
+          <div class="cluster-id">Cluster 07</div>
+          <h3>Center Fill · COMPACT C 45</h3>
+          <div class="cluster-type">Single Cabinet</div>
+        </div>
+        <div class="detail-group">
+          <h4>Rigging</h4>
+          <div class="rigging-note" style="font-style:italic;">Vertically mounted · waveguide at normal 100×50 position</div>
+          <div class="rigging-note">V-BR 001 vertical bracket</div>
+        </div>
+        <div class="detail-group">
+          <h4>Position</h4>
+          <div class="detail-row"><span class="key">X (L/R)</span><span class="val">+0.0 ft</span></div>
+          <div class="detail-row"><span class="key">Y (Depth)</span><span class="val">−20.0 ft</span></div>
+          <div class="detail-row"><span class="key">Z (Height)</span><span class="val">+22.0 ft AFF</span></div>
+        </div>
+        <div class="detail-group">
+          <h4>Orientation / Aim</h4>
+          <div class="detail-row"><span class="key">Aim H</span><span class="val">0 deg</span></div>
+          <div class="detail-row"><span class="key">Aim V</span><span class="val">−30 deg elevation</span></div>
+          <div class="detail-row"><span class="key">Roll</span><span class="val">+0.0 deg</span></div>
+        </div>
+      </div>
+
+      <!-- Center Sub Array -->
+      <div class="cluster-card">
+        <div class="cluster-card-header">
+          <div class="cluster-id">Cluster 08</div>
+          <h3>Center Sub Array · S 29</h3>
+          <div class="cluster-type">3× Cabinets · Flown Inverted Gradient Stack</div>
+        </div>
+        <div class="detail-group">
+          <h4>Rigging</h4>
+          <div class="rigging-note">1× FLY BAR FLB60676 sub suspension bar at top</div>
+          <div class="rigging-note">1× FLYING BRACKET FLB60739 upper cross bracket at top</div>
+          <div class="rigging-note">3× FLYING BRACKET FLB60673 sub suspension bracket per sub</div>
+          <div class="rigging-note" style="font-style:italic;">Reverse center subwoofer</div>
+        </div>
+        <div class="detail-group">
+          <h4>Position (Hang Point)</h4>
+          <div class="detail-row"><span class="key">X (L/R)</span><span class="val">+0.0 ft</span></div>
+          <div class="detail-row"><span class="key">Y (Depth)</span><span class="val">+0.0 ft</span></div>
+          <div class="detail-row"><span class="key">Z (Height)</span><span class="val">+25.0 ft AFF</span></div>
+        </div>
+        <div class="detail-group">
+          <h4>Orientation / Aim</h4>
+          <div class="detail-row"><span class="key">Aim H</span><span class="val">+0.0 deg</span></div>
+          <div class="detail-row"><span class="key">Aim V</span><span class="val">+0.0 deg</span></div>
+          <div class="detail-row"><span class="key">Roll</span><span class="val">+0.0 deg</span></div>
+        </div>
+      </div>
+
+    </div><!-- /cluster-grid -->
+  </section>
+</div>
+
+<!-- SECTION 06: AMP CHANNEL ALLOCATION -->
+<div id="amps" class="container">
+  <section class="section">
+    <div class="section-header">
+      <span class="section-number">06</span>
+      <h2 class="section-title">Amplifier Channel Allocation</h2>
+    </div>
+
+    <div class="amp-grid">
+
+      <div class="amp-block">
+        <div class="amp-block-header">
+          <div class="amp-id">XPS 16K · 01</div>
+          <div class="amp-model">XPS 16K · 4-Channel DSP Amplifier</div>
+        </div>
+        <div class="amp-channels">
+          <div class="amp-channel">
+            <span class="ch-letter">A</span>
+            <div class="ch-dest">
+              <strong>Main L — HL 6</strong>
+              <span class="ch-detail">Boxes 1–3 (top)</span>
+            </div>
+          </div>
+          <div class="amp-channel">
+            <span class="ch-letter">B</span>
+            <div class="ch-dest">
+              <strong>Main L — HL 6</strong>
+              <span class="ch-detail">Boxes 4–5</span>
+            </div>
+          </div>
+          <div class="amp-channel">
+            <span class="ch-letter">C</span>
+            <div class="ch-dest">
+              <strong>Main L — HL 6</strong>
+              <span class="ch-detail">Boxes 6–7</span>
+            </div>
+          </div>
+          <div class="amp-channel">
+            <span class="ch-letter">D</span>
+            <div class="ch-dest">
+              <strong>Main L — HL 6</strong>
+              <span class="ch-detail">Boxes 8–9 (bottom)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="amp-block">
+        <div class="amp-block-header">
+          <div class="amp-id">XPS 16K · 02</div>
+          <div class="amp-model">XPS 16K · 4-Channel DSP Amplifier</div>
+        </div>
+        <div class="amp-channels">
+          <div class="amp-channel">
+            <span class="ch-letter">A</span>
+            <div class="ch-dest">
+              <strong>Main R — HL 6</strong>
+              <span class="ch-detail">Boxes 1–3 (top)</span>
+            </div>
+          </div>
+          <div class="amp-channel">
+            <span class="ch-letter">B</span>
+            <div class="ch-dest">
+              <strong>Main R — HL 6</strong>
+              <span class="ch-detail">Boxes 4–5</span>
+            </div>
+          </div>
+          <div class="amp-channel">
+            <span class="ch-letter">C</span>
+            <div class="ch-dest">
+              <strong>Main R — HL 6</strong>
+              <span class="ch-detail">Boxes 6–7</span>
+            </div>
+          </div>
+          <div class="amp-channel">
+            <span class="ch-letter">D</span>
+            <div class="ch-dest">
+              <strong>Main R — HL 6</strong>
+              <span class="ch-detail">Boxes 8–9 (bottom)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="amp-block">
+        <div class="amp-block-header">
+          <div class="amp-id">XPS 16K · 03</div>
+          <div class="amp-model">XPS 16K · 4-Channel DSP Amplifier</div>
+        </div>
+        <div class="amp-channels">
+          <div class="amp-channel">
+            <span class="ch-letter">A</span>
+            <div class="ch-dest">
+              <strong>Center Sub Array</strong>
+              <span class="ch-detail">S 29 · 01 (Top)</span>
+            </div>
+          </div>
+          <div class="amp-channel">
+            <span class="ch-letter">B</span>
+            <div class="ch-dest">
+              <strong>Center Sub Array</strong>
+              <span class="ch-detail">S 29 · 02 (Mid, reversed)</span>
+            </div>
+          </div>
+          <div class="amp-channel">
+            <span class="ch-letter">C</span>
+            <div class="ch-dest">
+              <strong>Center Sub Array</strong>
+              <span class="ch-detail">S 29 · 03 (Bottom)</span>
+            </div>
+          </div>
+          <div class="amp-channel">
+            <span class="ch-letter">D</span>
+            <div class="ch-dest">
+              <strong>Center Fill</strong>
+              <span class="ch-detail">COMPACT C 45</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="amp-block">
+        <div class="amp-block-header">
+          <div class="amp-id">XPS 16K · 04</div>
+          <div class="amp-model">XPS 16K · 4-Channel DSP Amplifier</div>
+        </div>
+        <div class="amp-channels">
+          <div class="amp-channel">
+            <span class="ch-letter">A</span>
+            <div class="ch-dest">
+              <strong>Side Fill L</strong>
+              <span class="ch-detail">COMPACT C 45</span>
+            </div>
+          </div>
+          <div class="amp-channel">
+            <span class="ch-letter">B</span>
+            <div class="ch-dest">
+              <strong>Side Fill R</strong>
+              <span class="ch-detail">COMPACT C 45</span>
+            </div>
+          </div>
+          <div class="amp-channel">
+            <span class="ch-letter">C</span>
+            <div class="ch-dest">
+              <strong>Front Fill L</strong>
+              <span class="ch-detail">COMPACT M 08</span>
+            </div>
+          </div>
+          <div class="amp-channel">
+            <span class="ch-letter">D</span>
+            <div class="ch-dest">
+              <strong>Front Fill R</strong>
+              <span class="ch-detail">COMPACT M 08</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /amp-grid -->
+  </section>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div>
+    <div class="footer-logo">RCF</div>
+  </div>
+  <div class="footer-meta">
+    <div>RCF System Report · Crosspoint Church (Schillers)</div>
+    <div>Prepared by Michael Curtis · RCF USA · March 24, 2026</div>
+    <div style="margin-top:4px; color: #444;">© 2026 RCF S.p.A. · Confidential — For Client Use Only</div>
+  </div>
+</footer>
+
+</body>
+</html>
