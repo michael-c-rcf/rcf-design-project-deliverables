@@ -718,6 +718,7 @@
     <a href="#screenshots">SPL</a>
     <a href="#clusters">Clusters</a>
     <a href="#amps">Amplifiers</a>
+    <a href="#bom">BOM</a>
   </nav>
 </header>
 
@@ -791,7 +792,7 @@
       <h2 class="section-title">Design Walkthrough</h2>
     </div>
 
-    <a href="#" class="video-card">
+    <a href="https://share.descript.com/view/0Fd2cAd2g2m" target="_blank" rel="noopener" class="video-card">
       <div class="video-thumb"></div>
       <div class="video-info">
         <label>Descript · Video Walkthrough</label>
@@ -813,31 +814,19 @@
     <div class="screenshot-grid">
       <div class="screenshot-item">
         <span class="screenshot-label">Isometric</span>
-        <div class="screenshot-placeholder">
-          <span>EASE 5 · Direct SPL Broadband (A-wtd)</span>
-          <span>Isometric View</span>
-        </div>
+        <img src="assets/spl-isometric.png" alt="SPL Coverage — Isometric View">
       </div>
       <div class="screenshot-item">
         <span class="screenshot-label">Side</span>
-        <div class="screenshot-placeholder">
-          <span>EASE 5 · Direct SPL Broadband (A-wtd)</span>
-          <span>Side View</span>
-        </div>
+        <img src="assets/spl-side.png" alt="SPL Coverage — Side View">
       </div>
       <div class="screenshot-item">
         <span class="screenshot-label">Front</span>
-        <div class="screenshot-placeholder">
-          <span>EASE 5 · Direct SPL Broadband (A-wtd)</span>
-          <span>Front View</span>
-        </div>
+        <img src="assets/spl-front.png" alt="SPL Coverage — Front View">
       </div>
       <div class="screenshot-item">
         <span class="screenshot-label">Top</span>
-        <div class="screenshot-placeholder">
-          <span>EASE 5 · Direct SPL Broadband (A-wtd)</span>
-          <span>Top View</span>
-        </div>
+        <img src="assets/spl-top.png" alt="SPL Coverage — Top View">
       </div>
     </div>
 
@@ -1374,6 +1363,56 @@
     </div><!-- /amp-grid -->
   </section>
 </div>
+
+<!-- SECTION 07: BILL OF MATERIALS -->
+<div id="bom" class="container">
+  <section class="section">
+    <div class="section-header">
+      <span class="section-number">07</span>
+      <h2 class="section-title">Bill of Materials</h2>
+    </div>
+
+    <div class="detail-group" style="margin-bottom:40px;">
+      <h4 style="font-family:var(--condensed);font-size:0.85rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--black);margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid var(--black);">Loudspeakers</h4>
+      <table class="data-table">
+        <thead><tr><th>#</th><th>Model</th><th>Description</th><th>Qty</th><th>Zone / Cluster</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><span class="cluster-name">HL 6</span></td><td>Line Array Cabinet</td><td><span class="qty-badge">18</span></td><td class="aim-val">Main L (9) &middot; Main R (9)</td></tr>
+          <tr><td>2</td><td><span class="cluster-name">COMPACT C 45</span></td><td>Point Source &mdash; 100&times;50 H&times;V</td><td><span class="qty-badge">3</span></td><td class="aim-val">Side Fill L &middot; Side Fill R &middot; Center Fill</td></tr>
+          <tr><td>3</td><td><span class="cluster-name">COMPACT M 08</span></td><td>Point Source &mdash; Front Fill</td><td><span class="qty-badge">2</span></td><td class="aim-val">Front Fill L &middot; Front Fill R</td></tr>
+          <tr><td>4</td><td><span class="cluster-name">S 29</span></td><td>Dual 18&Prime; Subwoofer</td><td><span class="qty-badge">3</span></td><td class="aim-val">Center Sub Array</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="detail-group" style="margin-bottom:40px;">
+      <h4 style="font-family:var(--condensed);font-size:0.85rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--black);margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid var(--black);">Amplifiers</h4>
+      <table class="data-table">
+        <thead><tr><th>#</th><th>Model</th><th>Description</th><th>Qty</th><th>Assignment</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><span class="cluster-name">XPS 16K</span></td><td>4-Channel DSP Amplifier</td><td><span class="qty-badge">4</span></td><td class="aim-val">01: Main L &middot; 02: Main R &middot; 03: Subs + Ctr Fill &middot; 04: Fills</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="detail-group">
+      <h4 style="font-family:var(--condensed);font-size:0.85rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--black);margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid var(--black);">Rigging &amp; Hardware</h4>
+      <table class="data-table">
+        <thead><tr><th>#</th><th>Part No.</th><th>Description</th><th>Qty</th><th>Zone / Cluster</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><span class="cluster-name">FB-HDL6</span></td><td>HL 6 Flybar</td><td><span class="qty-badge">2</span></td><td class="aim-val">Main L &middot; Main R</td></tr>
+          <tr><td>2</td><td><span class="cluster-name" style="font-size:0.75rem;">Closet Pinpoint 9-10B</span></td><td>Single Point Hang Hardware</td><td><span class="qty-badge">2</span></td><td class="aim-val">Main L &middot; Main R</td></tr>
+          <tr><td>3</td><td><span class="cluster-name">V-BR 001</span></td><td>Vertical Bracket &mdash; COMPACT C 45</td><td><span class="qty-badge">3</span></td><td class="aim-val">Side Fill L &middot; Side Fill R &middot; Center Fill</td></tr>
+          <tr><td>4</td><td><span class="cluster-name">FLB60676</span></td><td>Sub Suspension Fly Bar</td><td><span class="qty-badge">1</span></td><td class="aim-val">Center Sub Array (top)</td></tr>
+          <tr><td>5</td><td><span class="cluster-name">FLB60739</span></td><td>Upper Cross Bracket</td><td><span class="qty-badge">1</span></td><td class="aim-val">Center Sub Array (top)</td></tr>
+          <tr><td>6</td><td><span class="cluster-name">FLB60673</span></td><td>Sub Suspension Bracket (per cab)</td><td><span class="qty-badge">3</span></td><td class="aim-val">Center Sub Array (S 29 &times; 3)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </section>
+</div>
+
 
 <!-- FOOTER -->
 <footer class="site-footer">
