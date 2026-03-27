@@ -391,6 +391,7 @@
   /* ── CLUSTER SUMMARY TABLE ── */
   .data-table {
     width: 100%;
+    min-width: 560px;
     border-collapse: collapse;
     font-size: 0.82rem;
   }
@@ -585,6 +586,17 @@
     text-align: right;
     font-weight: 500;
   }
+
+  /* ── SCROLLABLE TABLE WRAPPER (mobile) ── */
+  .table-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--gray-200) transparent;
+  }
+  .table-scroll::-webkit-scrollbar { height: 4px; }
+  .table-scroll::-webkit-scrollbar-track { background: transparent; }
+  .table-scroll::-webkit-scrollbar-thumb { background: var(--gray-200); border-radius: 2px; }
 
   /* ── AMP ALLOCATION ── */
   .amp-grid {
@@ -834,6 +846,7 @@
 
     <div class="detail-group" style="margin-bottom:40px;">
       <h4 style="font-family:var(--condensed);font-size:0.85rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--black);margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid var(--black);">Loudspeakers</h4>
+      <div class="table-scroll">
       <table class="data-table">
         <thead><tr><th>#</th><th>Model</th><th>Description</th><th>Qty</th><th>Zone / Cluster</th></tr></thead>
         <tbody>
@@ -841,6 +854,7 @@
         <!-- <tr><td>1</td><td><span class="cluster-name">{{CLUSTER_NAME}}</span><span class="model-tag">{{MODEL}}</span></td><td><span class="qty-badge">{{QTY}}</span></td><td class="coord-val">{{X}}</td><td class="coord-val">{{Y}}</td><td class="coord-val">{{Z}}</td><td class="aim-val">{{AIM_H}}</td><td class="aim-val">{{AIM_V}}</td><td class="aim-val">{{ROLL}}</td></tr> -->
       </tbody>
     </table>
+      </div>
   </section>
 </div>
 
