@@ -390,6 +390,7 @@
   /* ── CLUSTER SUMMARY TABLE ── */
   .data-table {
     width: 100%;
+    min-width: 560px;
     border-collapse: collapse;
     font-size: 0.82rem;
   }
@@ -584,6 +585,17 @@
     text-align: right;
     font-weight: 500;
   }
+
+  /* ── SCROLLABLE TABLE WRAPPER (mobile) ── */
+  .table-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--gray-200) transparent;
+  }
+  .table-scroll::-webkit-scrollbar { height: 4px; }
+  .table-scroll::-webkit-scrollbar-track { background: transparent; }
+  .table-scroll::-webkit-scrollbar-thumb { background: var(--gray-200); border-radius: 2px; }
 
   /* ── AMP ALLOCATION ── */
   .amp-grid {
@@ -833,6 +845,7 @@
 
     <div class="detail-group" style="margin-bottom:40px;">
       <h4 style="font-family:var(--condensed);font-size:0.85rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--black);margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid var(--black);">Loudspeakers</h4>
+      <div class="table-scroll">
       <table class="data-table">
         <thead><tr><th>#</th><th>Model</th><th>Description</th><th>Qty</th><th>Zone / Cluster</th></tr></thead>
         <tbody>
@@ -842,20 +855,24 @@
           <tr><td>4</td><td><span class="cluster-name">S 29</span></td><td>Dual 18&Prime; Subwoofer</td><td><span class="qty-badge">3</span></td><td class="aim-val">Center Sub Array</td></tr>
         </tbody>
       </table>
+      </div>
     </div>
 
     <div class="detail-group" style="margin-bottom:40px;">
       <h4 style="font-family:var(--condensed);font-size:0.85rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--black);margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid var(--black);">Amplifiers</h4>
+      <div class="table-scroll">
       <table class="data-table">
         <thead><tr><th>#</th><th>Model</th><th>Description</th><th>Qty</th><th>Assignment</th></tr></thead>
         <tbody>
           <tr><td>1</td><td><span class="cluster-name">XPS 16K</span></td><td>4-Channel DSP Amplifier</td><td><span class="qty-badge">4</span></td><td class="aim-val">01: Main L &middot; 02: Main R &middot; 03: Subs + Ctr Fill &middot; 04: Fills</td></tr>
         </tbody>
       </table>
+      </div>
     </div>
 
     <div class="detail-group">
       <h4 style="font-family:var(--condensed);font-size:0.85rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--black);margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid var(--black);">Rigging &amp; Hardware</h4>
+      <div class="table-scroll">
       <table class="data-table">
         <thead><tr><th>#</th><th>Part No.</th><th>Description</th><th>Qty</th><th>Zone / Cluster</th></tr></thead>
         <tbody>
@@ -867,6 +884,7 @@
           <tr><td>6</td><td><span class="cluster-name">FLB60673</span></td><td>Sub Suspension Bracket (per cab)</td><td><span class="qty-badge">3</span></td><td class="aim-val">Center Sub Array (S 29 &times; 3)</td></tr>
         </tbody>
       </table>
+      </div>
     </div>
 
   </section>
@@ -938,6 +956,7 @@
       <h2 class="section-title">Summary — All Clusters</h2>
     </div>
 
+    <div class="table-scroll">
     <table class="data-table">
       <thead>
         <tr>
@@ -1043,6 +1062,7 @@
         </tr>
       </tbody>
     </table>
+    </div>
   </section>
 </div>
 
