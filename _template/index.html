@@ -757,6 +757,48 @@
     padding: 6px 16px;
     pointer-events: none;
   }
+
+  /* ── BOM TABLE ── */
+  .bom-version-meta {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--gray-600);
+    letter-spacing: 0.06em;
+    margin-bottom: 20px;
+  }
+
+  .bom-table thead th:first-child { padding-left: 0; width: 52px; text-align: center; }
+
+  .bom-table tbody td:first-child {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--gray-800);
+    text-align: center;
+    padding-left: 0;
+  }
+
+  .bom-table tr.gear-type-header td {
+    background: var(--black);
+    color: #fff;
+    font-family: var(--condensed);
+    font-weight: 700;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 5px 12px 5px 0;
+    border-bottom: none;
+  }
+
+  .bom-table tr.gear-type-header:hover { background: var(--black) !important; }
+
+  .bom-footer {
+    margin-top: 20px;
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--gray-400);
+    letter-spacing: 0.04em;
+  }
+
 </style>
 </head>
 <body>
@@ -844,17 +886,26 @@
       <h2 class="section-title">Bill of Materials</h2>
     </div>
 
-    <div class="detail-group" style="margin-bottom:40px;">
-      <h4 style="font-family:var(--condensed);font-size:0.85rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--black);margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid var(--black);">Loudspeakers</h4>
-      <div class="table-scroll">
-      <table class="data-table">
-        <thead><tr><th>#</th><th>Model</th><th>Description</th><th>Qty</th><th>Zone / Cluster</th></tr></thead>
+    <p class="bom-version-meta"><!-- BOM_VERSION_LABEL --></p>
+
+    <div class="table-scroll">
+      <table class="data-table bom-table">
+        <thead>
+          <tr>
+            <th>Qty</th>
+            <th style="width:11%">Item Code</th>
+            <th style="width:17%">Model</th>
+            <th>Description</th>
+            <th style="width:14%">Role</th>
+          </tr>
+        </thead>
         <tbody>
-        <!-- TODO: one <tr> per cluster from EASE CSV -->
-        <!-- <tr><td>1</td><td><span class="cluster-name">{{CLUSTER_NAME}}</span><span class="model-tag">{{MODEL}}</span></td><td><span class="qty-badge">{{QTY}}</span></td><td class="coord-val">{{X}}</td><td class="coord-val">{{Y}}</td><td class="coord-val">{{Z}}</td><td class="aim-val">{{AIM_H}}</td><td class="aim-val">{{AIM_V}}</td><td class="aim-val">{{ROLL}}</td></tr> -->
-      </tbody>
-    </table>
-      </div>
+          <!-- BOM_ROWS_INJECT -->
+        </tbody>
+      </table>
+    </div>
+
+    <p class="bom-footer">Equipment list prepared by RCF USA &middot; Specifications subject to change.</p>
   </section>
 </div>
 
